@@ -1,0 +1,18 @@
+{
+  "name": "anti-ai-slop-writing",
+  "version": "3.0.0",
+  "description": "Natural, specific writing in English, Russian, and Ukrainian without stock AI mannerisms.",
+  "author": {
+    "name": "GitVoytenko"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Natural Writing",
+    "shortDescription": "Make prose specific, natural, and true to the author's voice.",
+    "longDescription": "Writes and revises audience-facing prose in English, Russian, or Ukrainian while preserving facts, intent, and the author's distinctive voice.",
+    "developerName": "GitVoytenko",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "Rewrite this text so it sounds natural and specific while preserving every fact and the author's voice."
+  }
+}

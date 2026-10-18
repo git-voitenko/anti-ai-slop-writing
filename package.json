@@ -44,8 +44,10 @@
   "scripts": {
     "test": "node --test",
     "lint:skill": "node scripts/validate-skill.js",
+    "sync:codex-plugin": "node scripts/sync-codex-plugin.js",
+    "check:codex-plugin": "node scripts/sync-codex-plugin.js --check",
     "self-scan": "node scripts/self-scan.js",
-    "check": "npm test && npm run lint:skill && node scripts/self-scan.js --check",
+    "check": "npm test && npm run lint:skill && npm run check:codex-plugin && node scripts/self-scan.js --check",
     "stats": "node scripts/stats.js"
   }
 }
