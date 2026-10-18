@@ -32,5 +32,8 @@ jobs:
       - name: Validate skill structure
         run: npm run lint:skill
 
+      - name: Validate packaged Codex plugin
+        run: npm run check:codex-plugin
+
       - name: Self-scan the documentation
         run: node scripts/self-scan.js --check
