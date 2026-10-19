@@ -1,0 +1,3 @@
+Use the existing checkout at /workspace/@@REPO@@; do not create a Git worktree for startup.
+Follow AGENTS.md: section «Как работаем» (how we work) and «Облако» (cloud); a cloud PR carries the line `land: pending-local`.
+Do not unset the proxy or disable TLS verification.

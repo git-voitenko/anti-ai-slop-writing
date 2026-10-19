@@ -1,0 +1,42 @@
+# .github/workflows/verify-full.yml — scheduled full checks of main; exit 77 passes only with allowed SKIP ids.
+# Rendered by agent-kit kit-sync from core/github/verify-full.yml.tmpl + profile; spec — agent-kit docs/architecture.md.
+name: verify-full
+on:
+  schedule:
+    - cron: '0 3 * * 1,3,5'
+  workflow_dispatch:
+concurrency:
+  group: verify-full
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  verify-full:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: verify (full)
+        shell: bash
+        env:
+          VERIFY_SKIP_ALLOW: ''
+        run: |
+          set +e
+          bash tools/verify.sh 2>&1 | tee verify-full.log
+          code=${PIPESTATUS[0]}
+          set -e
+          [ "$code" = 77 ] || exit "$code"
+          skips="$(grep -oE 'SKIP\([^)]*\)' verify-full.log | sed -E 's/^SKIP\((.*)\)$/\1/' | sort -u)"
+          [ -n "$skips" ] || { echo "verify-full: exit 77 without SKIP(<id>) lines"; exit 1; }
+          while IFS= read -r id; do
+            [[ "$id" =~ ^[a-z0-9-]+$ ]] || { echo "verify-full: unparseable SKIP id '$id'"; exit 1; }
+            case " $VERIFY_SKIP_ALLOW " in *" $id "*) ;; *) echo "verify-full: SKIP($id) is not in VERIFY_SKIP_ALLOW"; exit 1 ;; esac
+          done <<<"$skips"
+          echo "verify-full: only allowed SKIPs: $(echo $skips)"

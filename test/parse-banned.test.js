@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { writeFileSync, mkdtempSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import { parseBanned } from '../detector/lib/parse-banned.js';
 import { buildMatcher } from '../detector/lib/morphology.js';
@@ -71,7 +72,7 @@ test('commentary after a dash is dropped, the dash inside quotes is kept', () =>
 });
 
 test('reference sections that are not lists are skipped', () => {
-  const { entries } = parseBanned(new URL('en/banned.md', REFERENCES).pathname, 'en');
+  const { entries } = parseBanned(fileURLToPath(new URL('en/banned.md', REFERENCES)), 'en');
   // "Model-Specific First-Word Tells" and "Era-Specific AI Vocabulary" are
   // context for a human reader, not patterns to match
   assert.equal(patterns(entries).includes('ChatGPT tends to start with'), false);
@@ -80,7 +81,7 @@ test('reference sections that are not lists are skipped', () => {
 
 test('every shipped language file parses into all three kinds', () => {
   for (const lang of ['en', 'ru', 'uk']) {
-    const { entries } = parseBanned(new URL(`${lang}/banned.md`, REFERENCES).pathname, lang);
+    const { entries } = parseBanned(fileURLToPath(new URL(`${lang}/banned.md`, REFERENCES)), lang);
     const kinds = new Set(entries.map((e) => e.kind));
     assert.equal(entries.length > 100, true, `${lang}: expected a substantial list, got ${entries.length}`);
     for (const kind of ['vocabulary', 'phrase', 'opener']) {

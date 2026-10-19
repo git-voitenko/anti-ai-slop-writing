@@ -1,0 +1,28 @@
+{
+  "blocks": {
+    ".gitignore": "134d48c3ad3c7ac3f81a9098e54f0d38ca8851225081b7e884ae63ad325f245c"
+  },
+  "core_sha256": "ea4bbef59f7ad262cb97148d9bb1d5f20ad5eb44611564f5383473614dcb19e6",
+  "files": {
+    ".agents/skills/linear/SKILL.md": "a2c26ae1b5f4488e3a96fee5cdeb3ab032a034bc4bba7f1f94c3cc30cc5e22d7",
+    ".agents/skills/linear/references/templates.md": "ab8bcc26f07c081c51be1dcdaee90babcf8601dff88cdde43a9e8b03f9c40472",
+    ".agents/skills/verify/SKILL.md": "63da72f73c66aae26bd86e306b604f10508bc60b8a051aff3159fa7312991b57",
+    ".claude/rules/code-style.md": "d23609d4bad73d640deede5a5384ee894e9499577d3ff4940d2e074f0ca33325",
+    ".claude/settings.json": "f282a817450760b6fd9f5d99cd5d9d263f6964e86ff6a42d8a13d87feee18921",
+    ".claude/skills/linear": "symlink:../../.agents/skills/linear",
+    ".claude/skills/verify": "symlink:../../.agents/skills/verify",
+    ".codex/config.toml": "38ac0813adff86fb38d8b26855c1bd752c970d8cf49725c6aa877bb7b967af70",
+    ".github/workflows/verify-full.yml": "13ae03b9a67d7e7a816b8acce895f2f1a57b50df867d0ed76fa766162a4b04e7",
+    ".github/workflows/verify.yml": "e9fa0bb1e7f60953cd129722f09a2d06cce545cde038c9cbf63b31810ec407e0",
+    "CLAUDE.md": "4cd08e2186e6357a51a646d8fbd5c9402d8c595acf9904b96fe9c5778c32d1ea",
+    "docs/code-style.md": "edd36086f9be0634c320403a1682f75ec15213c53b6ee8619165bef77625cf6d",
+    "hooks/pre-commit": "dc4b3b825e5c34ebd8e64d4d09a1d883cfcf1df8678b0aafb46652c450755282",
+    "hooks/pre-push": "e4592caa96183f0d1d47b8c14420acf37b46bbc747980154f5eb29622197fa02",
+    "tools/hooks-install.sh": "1dfa48f5f6e78e43f5eec07733d59ddfdb9471754824d0b3e274f5c08e6e0c6e",
+    "tools/kit-check.sh": "b41b0719e6ef2f481f3b1638fbaa5ceaeeed08c04f4735663e403e70774c9141",
+    "tools/main-checkout-ff.sh": "6787b2701d4abad5404c42217c0e3c02ea2604d13c2ac2000faad39ee4bfc5cb"
+  },
+  "profile": "node",
+  "source_sha": "04f3eb8244653f37a90d6f595c051457c77a4747",
+  "version": "1.0.1"
+}
