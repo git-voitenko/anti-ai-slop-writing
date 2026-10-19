@@ -12,17 +12,17 @@
     ".claude/skills/linear": "symlink:../../.agents/skills/linear",
     ".claude/skills/verify": "symlink:../../.agents/skills/verify",
     ".codex/config.toml": "38ac0813adff86fb38d8b26855c1bd752c970d8cf49725c6aa877bb7b967af70",
-    ".github/workflows/verify-full.yml": "0608130ee401497722d4388cdbf252c95b7e07b2ea6709b69316654e4bc8cb09",
+    ".github/workflows/verify-full.yml": "13ae03b9a67d7e7a816b8acce895f2f1a57b50df867d0ed76fa766162a4b04e7",
     ".github/workflows/verify.yml": "e9fa0bb1e7f60953cd129722f09a2d06cce545cde038c9cbf63b31810ec407e0",
     "CLAUDE.md": "4cd08e2186e6357a51a646d8fbd5c9402d8c595acf9904b96fe9c5778c32d1ea",
-    "docs/code-style.md": "51098cd95da777b79683fc938c0139898dca981345aac3f8e3d950eaad77f152",
+    "docs/code-style.md": "edd36086f9be0634c320403a1682f75ec15213c53b6ee8619165bef77625cf6d",
     "hooks/pre-commit": "dc4b3b825e5c34ebd8e64d4d09a1d883cfcf1df8678b0aafb46652c450755282",
     "hooks/pre-push": "e4592caa96183f0d1d47b8c14420acf37b46bbc747980154f5eb29622197fa02",
     "tools/hooks-install.sh": "1dfa48f5f6e78e43f5eec07733d59ddfdb9471754824d0b3e274f5c08e6e0c6e",
-    "tools/kit-check.sh": "8c9767730246819bceadcad0e3f8b2b5fcb7e52bbb88fe62d98b9d4f14688b9a",
+    "tools/kit-check.sh": "b41b0719e6ef2f481f3b1638fbaa5ceaeeed08c04f4735663e403e70774c9141",
     "tools/main-checkout-ff.sh": "6787b2701d4abad5404c42217c0e3c02ea2604d13c2ac2000faad39ee4bfc5cb"
   },
   "profile": "node",
-  "source_sha": "fa895f5e594ebd52a408cbbd85e6c643a26e0187",
-  "version": "1.0.0"
+  "source_sha": "04f3eb8244653f37a90d6f595c051457c77a4747",
+  "version": "1.0.1"
 }

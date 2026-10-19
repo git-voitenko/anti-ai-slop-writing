@@ -129,7 +129,7 @@ def outside_fences(lines):
 
 def atx_title(heading):
     text = (heading.group(2) or "").strip()
-    # Only a closing run of '#' preceded by a space (or the whole text) is decoration; '## Проект#' keeps its '#'.
+    # Only a closing run of '#' preceded by a space (or the whole text) is decoration; '## Title#' keeps its '#'.
     return re.sub(r"(^|\s+)#+$", "", text).strip()
 
 
