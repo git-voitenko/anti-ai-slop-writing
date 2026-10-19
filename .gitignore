@@ -4,3 +4,16 @@ npm-debug.log*
 *.tgz
 .idea/
 .vscode/
+
+# agent-kit:gitignore begin
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.key
+.clasprc.json
+.claude/settings.local.json
+.DS_Store
+node_modules/
+# agent-kit:gitignore end

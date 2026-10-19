@@ -1,0 +1,12 @@
+#!/bin/bash
+# hooks/pre-push — refuses a direct push to the remote main; Mac hygiene, not server protection.
+# Installed by tools/hooks-install.sh; spec — AGENTS.md (agent-kit core), invariant 5 and step 7.
+set -euo pipefail
+while read -r _local_ref _local_sha remote_ref _remote_sha; do
+  [ "$remote_ref" = refs/heads/main ] || continue
+  [ "${ALLOW_MAIN_PUSH:-}" != 1 ] || continue
+  echo "pre-push: ❌ main меняется только merge PR: gh pr create --base main --head <ветка> --fill," >&2
+  echo "  затем review-gate и gh pr merge --auto --merge (режим A) или land (режим B). Обход: ALLOW_MAIN_PUSH=1." >&2
+  exit 1
+done
+exit 0

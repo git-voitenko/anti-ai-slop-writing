@@ -1,0 +1,19 @@
+#!/bin/bash
+# hooks/pre-commit — refuses commits to main in the main checkout; restores the exec bit of staged scripts.
+# Installed by tools/hooks-install.sh; spec — AGENTS.md (agent-kit core), invariant 5.
+set -euo pipefail
+if [ "${ALLOW_MAIN_COMMIT:-}" != 1 ] \
+   && [ "$(git symbolic-ref --quiet --short HEAD 2>/dev/null || true)" = main ] \
+   && [ "$(git rev-parse --path-format=absolute --git-dir)" = "$(git rev-parse --path-format=absolute --git-common-dir)" ]; then
+  echo "pre-commit: ❌ main меняется только merge PR. Своя ветка: git switch -c <slug>; обход — ALLOW_MAIN_COMMIT=1." >&2
+  exit 1
+fi
+# git stores the mode, not filesystem bits: a script committed as 100644 will not run after merge.
+BASE="$(git rev-parse --verify -q HEAD || git hash-object -t tree /dev/null)"
+git diff-index --cached --raw --diff-filter=AM "$BASE" |
+  awk -F'\t' '{ split($1, m, " "); if (m[2] == "100644") print $2 }' |
+  while IFS= read -r f; do
+    case "$f" in *.sh) ;; *) [ "$(git cat-file -p ":$f" 2>/dev/null | head -c2)" = '#!' ] || continue ;; esac
+    git update-index --chmod=+x -- "$f"; [ ! -f "$f" ] || chmod +x "$f"
+  done
+exit 0
