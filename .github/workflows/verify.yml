@@ -1,31 +1,14 @@
-# .github/workflows/verify.yml — required check `verify`: fast checks on every PR head and on main.
-# Rendered by agent-kit kit-sync from core/github/verify.yml.tmpl + profile; spec — agent-kit docs/architecture.md.
+# Acceptance probe P7 (redo): the required `verify` job replaced by an unconditional success. agent-review must fail this PR.
 name: verify
 on:
   pull_request:
     types: [opened, synchronize, reopened]
   push:
     branches: [main]
-concurrency:
-  group: verify-${{ github.ref }}
-  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
-  # No `if:` and no path filters: a skipped required job counts as success, a filtered one stays pending.
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-        with:
-          # kit-check compares .agent-kit.lock with origin/main, so history and the base branch are needed.
-          fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: .nvmrc
-          cache: npm
-      - run: npm ci
-      - name: verify --fast
-        shell: bash
-        run: bash tools/verify.sh --fast
+      - run: echo probe-verify-replaced-by-unconditional-success

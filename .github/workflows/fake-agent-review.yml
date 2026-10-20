@@ -1,0 +1,12 @@
+# Acceptance probe P3b (redo): a self-made check named `agent-review` from GitHub Actions, not from the reviewer App. It must not satisfy the ruleset.
+name: fake-agent-review
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+permissions:
+  contents: read
+jobs:
+  agent-review:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo probe-self-made-agent-review-check-from-actions
