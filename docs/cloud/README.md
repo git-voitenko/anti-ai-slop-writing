@@ -42,3 +42,20 @@
 | Setup script: `/tmp/setup-verify.log` | файл отсутствует; запуск и успешность setup-скрипта подтвердить нельзя |
 
 Зависание наблюдалось на `detector/cli.js - --lang ru --format json` в тесте stdin. Минимальная отдельная проба `execFileSync` с передачей строки в stdin и `readFileSync(0, 'utf8')` также не завершилась за 10 с (ограничение времени, код `124`). Причина не установлена. Из-за ошибки тестов последующие этапы `npm run check` не выполнялись. Setup-скрипты и проверки не менялись.
+
+
+### Продолжение в штатном режиме одобрения команды
+
+Прежние результаты выше относятся к выполнению с `sandbox_permissions=use_default`. При диагностике локальный `socketpair` передал 3 байта через `write/read`, но `shutdown(SHUT_WR)` вернул `EPERM`, и EOF не пришёл за 1 с. `strace` установлен, однако запуск отклонён: `PTRACE_TRACEME: Operation not permitted`. Точный syscall внутри Node не прослежен.
+
+Для продолжения использован поддерживаемый режим `sandbox_permissions=require_escalated` с отдельным штатным одобрением команды. Настройки proxy, CA, auth, sandbox/security policy и тесты не менялись. Локальная проба `execFileSync` со строкой stdin и дочерним `readFileSync(0, 'utf8')` прошла в этом режиме (код `0`, внешний лимит 8 с, лимит дочернего процесса 3 с). Это подтверждает зависимость прежнего сбоя от режима исполнения; исправление detector не потребовалось.
+
+| Повторное измерение | Значение |
+|---|---|
+| `git fetch origin` и `git merge --ff-only origin/main` в одобренном режиме | fetch успешен; `Already up to date`; удалённая база подтверждена: `582432a9bd4b22c64bfbc31464c443dd384b4386`, tree `9be061e98633c637b09f612cd1cd2bc30744fffe` |
+| Версии и nvm после fetch | Node `v24.19.0`, npm `11.9.0`, команда проверки alias снова вернула `no-nvm-default` |
+| `bash tools/verify.sh --fast` в одобренном режиме до этого уточнения README | код `0`; 60 тестов, pass 60, fail 0, cancelled 0; kit-check OK, validate-skill OK, check:codex-plugin OK, self-scan 0 находок на 7 файлах; внешний лимит 120 с, тайм-аут не сработал |
+| `bash tools/verify.sh --fast` в одобренном режиме после уточнения README | код `0`; 60 тестов, pass 60, fail 0, cancelled 0; kit-check OK, validate-skill OK, check:codex-plugin OK, self-scan 0 находок на 7 файлах; внешний лимит 120 с, тайм-аут не сработал |
+| `/tmp/setup-verify.log` при продолжении | по-прежнему отсутствует; это не доказывает, что setup не запускался |
+
+Исходный коммит `5645b4d15f34ee9abae90fd9fb06ebc61ce47939` сохранён в истории; уточнение оформляется отдельным коммитом. Mac review-gate и серверные проверки на финальном SHA остаются отдельными условиями посадки PR.
