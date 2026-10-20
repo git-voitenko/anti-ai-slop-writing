@@ -8,6 +8,11 @@ if they drift.
 
 ## [Unreleased]
 
+### Added
+
+- CONTRIBUTING: a section on how a pull request lands (required checks
+  `verify` and `agent-review`, merge commits only).
+
 ## [3.0.0] - 2026-09-14
 
 ### Changed

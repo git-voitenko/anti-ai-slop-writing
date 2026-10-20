@@ -107,3 +107,13 @@ this project installs from the repository.
 Update `CHANGELOG.md` under `## [Unreleased]`. Version numbers live in three
 places (`SKILL.md`, `package.json`, `CHANGELOG.md`) and the validator fails if
 they disagree, so a release bumps all three together.
+
+## How a pull request lands
+
+`main` changes only through a pull request: GitHub refuses direct pushes,
+force pushes and branch deletion. A merge needs two green checks on the exact
+head commit. `verify` is GitHub Actions running `tools/verify.sh --fast`.
+`agent-review` is a review of that commit published by the
+`dmi-labs-agent-reviewer` app. Pushing a new commit to the branch leaves the
+old review behind, so a fix means a second review. Only merge commits are
+allowed, and the branch is deleted after the merge.
