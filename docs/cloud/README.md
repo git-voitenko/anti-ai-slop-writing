@@ -36,7 +36,7 @@
 | Обновление базы | `git fetch origin` → код `128`: нет соединения с `proxy:8080`; повтор дал ту же ошибку. `git merge --ff-only origin/main` → `Already up to date` по локальной ссылке; свежесть относительно GitHub не подтверждена |
 | `node -v` | `v24.19.0` (мажор 24) |
 | `npm -v` | `11.9.0` |
-| `nvm alias default 2>/dev/null || echo no-nvm-default` | `no-nvm-default`; наличие default alias не подтверждено |
+| `nvm alias default 2>/dev/null \|\| echo no-nvm-default` | `no-nvm-default`; наличие default alias не подтверждено |
 | `bash tools/verify.sh --fast` до правки | код `1` после принудительной остановки зависшего дочернего CLI-процесса через ~71 с; kit-check OK (agent-kit v1.0.1, профиль node, 17 managed-файлов); отчёт Node: tests 7, pass 6, fail 1 (`test/cli.test.js`). Это результаты файлов тестов, успешный прогон 60 отдельных тестов не подтверждён |
 | `bash tools/verify.sh --fast` после правки | kit-check OK; `npm test` не завершился, остановлен лимитом 45 с (`timeout --kill-after=5s 45s`), код оболочки `124`; дописанный после остановки отчёт Node: tests 7, pass 6, fail 0, cancelled 1 (`test/cli.test.js`: `Promise resolution is still pending but the event loop has already resolved`) |
 | Setup script: `/tmp/setup-verify.log` | файл отсутствует; запуск и успешность setup-скрипта подтвердить нельзя |
