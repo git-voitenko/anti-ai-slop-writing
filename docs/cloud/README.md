@@ -19,6 +19,6 @@
 | ОС | Linux 6.18.44-fc-v139 |
 | `bash tools/verify.sh --fast` (до правки) | код `0`: kit-check OK (agent-kit v1.0.1, профиль node, 17 managed-файлов), 60 тестов detector, 0 упавших; validate-skill ok; check:codex-plugin ok; self-scan 0 находок на 6 файлах |
 
-Наблюдение: `docs/cloud/README.md` до этой проверки в репозитории не было; файл создан этим PR.
+Наблюдение: `docs/cloud/README.md` до этой проверки в репозитории не было; файл создан этим PR. Bootstrap `~/.anti-ai-slop-writing-bootstrap/` создаёт репозиторный `docs/cloud/claude-setup.sh` (с этого PR): pinned Node 24.22.0 по sha256 с nodejs.org, вердикт в `status` и `env.sh`, затем `npm ci` только при OK; скрипт всегда завершается кодом 0, поэтому сессия обязана прочитать статус. Владелец вставляет этот файл в Setup script среды; в среде со старым setup `source` завершится ошибкой — это сигнал остановиться и сообщить владельцу. `codex-setup.sh` приведён к скрипту среды Codex (nvm вне subshell, `nvm alias default`).
 
 Правило: В начале каждой Claude Cloud-сессии выполните `source ~/.anti-ai-slop-writing-bootstrap/env.sh`, проверьте `ANTI_AI_SLOP_WRITING_BOOT_STATUS=OK` и `node -v` = `v24.22.0`; при BLOCKED или несовпадении версии остановите задачу и прочитайте `~/.anti-ai-slop-writing-bootstrap/status`.
