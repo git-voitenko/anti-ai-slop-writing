@@ -8,5 +8,6 @@ trim_trailing_whitespace = true
 indent_style = space
 indent_size = 2
 
+# Markdown uses two trailing spaces for a line break, so they are kept.
 [*.md]
 trim_trailing_whitespace = false
