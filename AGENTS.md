@@ -1,6 +1,6 @@
 # AGENTS.md · anti-ai-slop-writing
 
-<!-- agent-kit:core begin v1.0.7 -->
+<!-- agent-kit:core begin v1.0.8 -->
 ## Ядро agent-kit · общий стандарт работы агентов
 
 > Блок между маркерами `agent-kit:core` вставляет `agent-kit` (`bin/kit-sync.sh`); источник — `agent-kit/core/AGENTS.core.md`, здесь его не правят: `tools/kit-check.sh` сверяет копию с `.agent-kit.lock`. Правила репозитория — в проектном блоке ниже маркера `end`.
