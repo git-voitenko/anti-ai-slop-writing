@@ -91,7 +91,7 @@
 
 ## Проект
 
-`anti-ai-slop-writing` — навык редактирования текста и zero-dependency детектор шаблонных паттернов. Режим: A — repo-level ruleset `personal-main-protection` (required `verify` + `agent-review`), auto-merge; принят 20.10 (`#7` → `07afea27`); подробности — `REPOS.md` agent-kit. Профиль agent-kit: node.
+`anti-ai-slop-writing` — навык редактирования текста и zero-dependency детектор шаблонных паттернов. Режим: A. Защита, проверки и история приёмки — `REPOS.md` agent-kit. Профиль agent-kit: node.
 
 ## Порядок чтения
 
