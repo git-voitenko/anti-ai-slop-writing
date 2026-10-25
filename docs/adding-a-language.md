@@ -40,7 +40,7 @@ demonstrates a language-specific rhythm, but it is not loaded on routine tasks.
 One line in the language-routing list, shaped like the existing ones:
 
 ```markdown
-- Ukrainian: [references/uk/rules.md](references/uk/rules.md)
+- <Language>: [references/<lang>/rules.md](references/<lang>/rules.md)
 ```
 
 That is the whole runtime change. `npm run lint:skill` checks that the link
