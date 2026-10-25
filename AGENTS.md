@@ -1,6 +1,6 @@
 # AGENTS.md · anti-ai-slop-writing
 
-<!-- agent-kit:core begin v1.0.1 -->
+<!-- agent-kit:core begin v1.0.7 -->
 ## Ядро agent-kit · общий стандарт работы агентов
 
 > Блок между маркерами `agent-kit:core` вставляет `agent-kit` (`bin/kit-sync.sh`); источник — `agent-kit/core/AGENTS.core.md`, здесь его не правят: `tools/kit-check.sh` сверяет копию с `.agent-kit.lock`. Правила репозитория — в проектном блоке ниже маркера `end`.
@@ -91,7 +91,7 @@
 
 ## Проект
 
-`anti-ai-slop-writing` — навык редактирования текста и zero-dependency детектор шаблонных паттернов. Режим: A, repo-level ruleset (`agent-kit/REPOS.md`). Профиль agent-kit: node.
+`anti-ai-slop-writing` — навык редактирования текста и zero-dependency детектор шаблонных паттернов. Режим: A — repo-level ruleset `personal-main-protection` (required `verify` + `agent-review`), auto-merge; принят 20.10 (`#7` → `07afea27`); подробности — `REPOS.md` agent-kit. Профиль agent-kit: node.
 
 ## Порядок чтения
 

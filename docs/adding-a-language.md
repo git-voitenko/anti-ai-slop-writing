@@ -37,10 +37,10 @@ demonstrates a language-specific rhythm, but it is not loaded on routine tasks.
 
 ## 2. Route it in `SKILL.md`
 
-One line in the language-routing list:
+One line in the language-routing list, shaped like the existing ones:
 
 ```markdown
-- German: [references/de/rules.md](references/de/rules.md)
+- Ukrainian: [references/uk/rules.md](references/uk/rules.md)
 ```
 
 That is the whole runtime change. `npm run lint:skill` checks that the link
