@@ -7,7 +7,7 @@ pull request this repository can get, and it is a one-line change.
 ## Setup
 
 ```bash
-git clone https://github.com/GitVoytenko/anti-ai-slop-writing.git
+git clone https://github.com/git-voitenko/anti-ai-slop-writing.git
 cd anti-ai-slop-writing
 npm run check    # tests, skill validation, self-scan – no install step, no dependencies
 ```

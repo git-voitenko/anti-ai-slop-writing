@@ -1,6 +1,6 @@
 # Anti-AI-Slop Writing
 
-[![CI](https://github.com/GitVoytenko/anti-ai-slop-writing/actions/workflows/ci.yml/badge.svg)](https://github.com/GitVoytenko/anti-ai-slop-writing/actions/workflows/ci.yml)
+[![CI](https://github.com/git-voitenko/anti-ai-slop-writing/actions/workflows/ci.yml/badge.svg)](https://github.com/git-voitenko/anti-ai-slop-writing/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen.svg)](package.json)
 
@@ -50,7 +50,7 @@ An English punctuation rule is never copied across blindly.
 Keep one repository checkout and link both agents to it:
 
 ```bash
-git clone https://github.com/GitVoytenko/anti-ai-slop-writing.git ~/Developer/skills/anti-ai-slop-writing
+git clone https://github.com/git-voitenko/anti-ai-slop-writing.git ~/Developer/skills/anti-ai-slop-writing
 ln -s ~/Developer/skills/anti-ai-slop-writing ~/.claude/skills/anti-ai-slop-writing
 ln -s ~/Developer/skills/anti-ai-slop-writing ~/.codex/skills/anti-ai-slop-writing
 ```
@@ -61,9 +61,9 @@ Restart or reload the agent session so it rebuilds its skill catalog.
 If you need only one agent, clone directly into its skills directory:
 
 ```bash
-git clone https://github.com/GitVoytenko/anti-ai-slop-writing.git ~/.claude/skills/anti-ai-slop-writing
+git clone https://github.com/git-voitenko/anti-ai-slop-writing.git ~/.claude/skills/anti-ai-slop-writing
 # or
-git clone https://github.com/GitVoytenko/anti-ai-slop-writing.git ~/.codex/skills/anti-ai-slop-writing
+git clone https://github.com/git-voitenko/anti-ai-slop-writing.git ~/.codex/skills/anti-ai-slop-writing
 ```
 
 Claude Desktop / Cowork can import the folder as a skill. An uploaded copy does
@@ -109,13 +109,13 @@ The linter runs on Node 18 or newer and has no dependencies. It parses the
 truth.
 
 ```bash
-npx github:GitVoytenko/anti-ai-slop-writing draft.md
+npx github:git-voitenko/anti-ai-slop-writing draft.md
 ```
 
 Or install from the repository:
 
 ```bash
-npm install GitVoytenko/anti-ai-slop-writing
+npm install git-voitenko/anti-ai-slop-writing
 
 aislop draft.md
 aislop posts/ --lang ru --severity medium
