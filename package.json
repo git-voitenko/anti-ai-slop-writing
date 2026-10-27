@@ -5,13 +5,13 @@
   "type": "module",
   "license": "MIT",
   "author": "Dmitrii Voitenko",
-  "homepage": "https://github.com/GitVoytenko/anti-ai-slop-writing#readme",
+  "homepage": "https://github.com/git-voitenko/anti-ai-slop-writing#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GitVoytenko/anti-ai-slop-writing.git"
+    "url": "git+https://github.com/git-voitenko/anti-ai-slop-writing.git"
   },
   "bugs": {
-    "url": "https://github.com/GitVoytenko/anti-ai-slop-writing/issues"
+    "url": "https://github.com/git-voitenko/anti-ai-slop-writing/issues"
   },
   "keywords": [
     "ai-writing",
