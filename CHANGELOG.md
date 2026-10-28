@@ -13,6 +13,13 @@ if they drift.
 - CONTRIBUTING: a section on how a pull request lands (required checks
   `verify` and `agent-review`, merge commits only).
 
+### Changed
+
+- The repository now lives at `git-voitenko/anti-ai-slop-writing`: install with
+  `npm install git-voitenko/anti-ai-slop-writing` or run
+  `npx github:git-voitenko/anti-ai-slop-writing`. The previous owner address
+  still works through the GitHub redirect.
+
 ## [3.0.0] - 2026-09-14
 
 ### Changed
@@ -102,6 +109,6 @@ number continues that history rather than restarting at 1.0.0.
 - Test fixtures in both directions: slop the detector must catch, and ordinary
   human writing it must leave alone.
 
-[Unreleased]: https://github.com/GitVoytenko/anti-ai-slop-writing/compare/v3.0.0...HEAD
-[3.0.0]: https://github.com/GitVoytenko/anti-ai-slop-writing/compare/v2.4.0...v3.0.0
-[2.4.0]: https://github.com/GitVoytenko/anti-ai-slop-writing/releases/tag/v2.4.0
+[Unreleased]: https://github.com/git-voitenko/anti-ai-slop-writing/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/git-voitenko/anti-ai-slop-writing/compare/v2.4.0...v3.0.0
+[2.4.0]: https://github.com/git-voitenko/anti-ai-slop-writing/releases/tag/v2.4.0
