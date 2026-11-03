@@ -1,6 +1,6 @@
 # AGENTS.md · anti-ai-slop-writing
 
-<!-- agent-kit:core begin v1.0.9 -->
+<!-- agent-kit:core begin v1.0.11 -->
 ## Ядро agent-kit · общий стандарт работы агентов
 
 > Блок между маркерами `agent-kit:core` вставляет `agent-kit` (`bin/kit-sync.sh`); источник — `agent-kit/core/AGENTS.core.md`, здесь его не правят: `tools/kit-check.sh` сверяет копию с `.agent-kit.lock`. Правила репозитория — в проектном блоке ниже маркера `end`.
@@ -26,9 +26,9 @@
 2. **Свежая база.** В новом дереве, пока в нём нет своих коммитов: `git fetch origin`. Claude (`claude -w`, Desktop) — ветка уже создана, новую не заводить: `git merge --ff-only origin/main` (локальный `origin/main` мог отстать). Codex строит дерево от локальной ветки — ветка от `origin/main`; в detached HEAD — `git switch -c <slug> origin/main`.
 3. **Правка и проверки.** `bash tools/verify.sh --fast` — один вход на репозиторий. Контракт: `0` — зелёный, `77` — SKIP (не хватает среды; причина в выводе), иначе — красный; первым шагом он вызывает `tools/kit-check.sh`. Claude делает это навыком `verify` перед коммитом.
 4. **Коммит.** Обычный `git commit` в свою ветку, небольшими логическими порциями.
-5. **Ревью до push.** Claude — `/code-review high origin/main...HEAD` (только Claude). Codex — субагент-ревьюер **только на чтение** по `git diff origin/main...<SHA>`, вручную — `/review` в режиме Detached. Правило — «Review guidelines» ниже. Это самопроверка автора; свидетельство ревью для merge даёт только шаг 7.
+5. **Ревью до push.** Модель ревьюера — по `docs/models.md`. Claude — `/code-review high origin/main...HEAD` (только Claude). Codex — субагент-ревьюер **только на чтение** по `git diff origin/main...<SHA>`, вручную — `/review` в режиме Detached. Правило — «Review guidelines» ниже. Это самопроверка автора; свидетельство ревью для merge даёт только шаг 7.
 6. **Находки.** Подтверждённая находка о корректности или требованиях — чинить и коммитить; мелкая правка (несколько строк) — перечитать диф, существенная — полное ревью заново. Мелочь — стиль, имя, комментарий — чинить сразу. Каждая неисправленная — строкой в «Outcomes» плана (без плана — в описании PR) с пометкой: «ложная» — ревьюер ошибся; «по замыслу» — оставлено сознательно, риск — в ADR; «отложена» — настоящая, но вне корректности этой задачи или ждёт условия — пункт задачи Linear «Хвосты ревью <задача>» с триггером «когда чинить», номер — в той же строке.
-7. **Посадка.** `git fetch origin` → `git merge origin/main` → `bash tools/verify.sh --fast` → `git push -u origin HEAD` → `gh pr create --base main --head <ветка> --fill` (тело: «Проверки: <команда> → <код>», «Ревью: <способ> → N, исправлено K», `Part of DMI-n` или `Fixes DMI-n`; плюс подпись раннера, если его правила её требуют) → PR отстаёт от `main` (strict) — `gh pr update-branch <n>`, затем снова verify → **независимое ревью финального SHA:** `review-gate <owner/repo> <n>` на Mac — ревьюер (Codex `gpt-6-astra` `xhigh` только на чтение по `git diff origin/main...<sha>` в чистом клоне или Claude `/code-review`) и check-run **`agent-review`** от App `dmi-labs-agent-reviewer` (ID 5370278) на точном `head.sha`; при P0/P1 — `failure`: чинить, push, снова `review-gate` → завершение по режиму репозитория (строка `Режим:` в `## Проект`, реестр — `agent-kit/REPOS.md`):
+7. **Посадка.** `git fetch origin` → `git merge origin/main` → `bash tools/verify.sh --fast` → `git push -u origin HEAD` → `gh pr create --base main --head <ветка> --fill` (тело: «Проверки: <команда> → <код>», «Ревью: <способ> → N, исправлено K», `Part of DMI-n` или `Fixes DMI-n`; плюс подпись раннера, если его правила её требуют) → PR отстаёт от `main` (strict) — `gh pr update-branch <n>`, затем снова verify → **независимое ревью финального SHA:** `review-gate <owner/repo> <n>` на Mac — ревьюер своего вендора по `docs/models.md` (чистый клон, только чтение: Codex по `git diff origin/main...<sha>`, Claude через `/code-review`) и check-run **`agent-review`** от App `dmi-labs-agent-reviewer` (ID 5370278) на точном `head.sha`; при P0/P1 — `failure`: чинить, push, снова `review-gate` → завершение по режиму репозитория (строка `Режим:` в `## Проект`, реестр — `agent-kit/REPOS.md`):
    - **режим A** (ruleset): `gh pr merge <n> --auto --merge` — GitHub сливает сам, когда `verify` и `agent-review` зелёные для текущего SHA;
    - **режим B** (без серверной защиты): `land <owner/repo> <n>` — проверяет `verify` и `agent-review` success для `head.sha`, `behind_by = 0`, `mergeable_state = clean` и сразу выполняет `gh pr merge --merge --match-head-commit <sha>`; иначе отказывает с причиной.
 
@@ -54,6 +54,8 @@
 - **Ограничения:** локально — полный цикл, включая `review-gate` и завершение; облако приложения — PR без завершения (`land: pending-local`); legacy — без `origin` и `gh`, PR только `make_pr`. `/goal` у Codex есть только интерактивно.
 
 ### Работа над задачей
+
+- **Модели по ролям:** [правила выбора и замены моделей](docs/models.md), включая субагентов и ревьюеров.
 
 - **План 5–15 шагов** — файл `docs/plans/<slug>.md` (путь уникален — иначе конфликт add/add), разделы Progress, Decision Log, Surprises, Outcomes; затем `/goal "все пункты <файл> выполнены, их проверки зелёные; не больше N ходов"` (Claude; у Codex — только интерактивно). Проверки должны попадать в вывод — оценщик видит только разговор. Сажать малыми порциями, каждую — через ревью и PR.
 - **Продолжение работы** — задача Linear → план (адрес — в задаче) → `git log`/PR → `verify`. Решения владельца и процедуры — только в репозитории (план, `docs/adr.md`, канон); память раннера — предпочтения.
@@ -85,7 +87,7 @@
 - Текст проектного блока, ослабляющий инвариант ядра, и правка managed-файла или `.agent-kit.lock` мимо `kit-sync` — находка P1.
 - Код-стиль К1–К9 — §«Код-стиль» выше и `docs/code-style.md`; расхождение идёт строкой в отчёт, ревью им не краснеет.
 - Подтверждённая находка о корректности или требованиях → чинить, коммитить, ревьюить заново. Остальное — по шагу 6: строкой в «Outcomes» плана, отложенное — в задачу Linear, и простым языком в итог владельцу.
-- Рубрика P0–P3; в отчёт идут P0–P1, по ним `review-gate` публикует `failure`. Рискованный диф (необратимое, прод, деньги) — `/code-review max` (только Claude) или Codex `xhigh`.
+- Рубрика P0–P3; в отчёт идут P0–P1, по ним `review-gate` публикует `failure`. Для рискованного дифа (необратимое, прод, деньги) Claude запускает `/code-review max`; модель ревьюера — по `docs/models.md`.
 - Ревьюер дерево не правит: читает диф и возвращает находки.
 <!-- agent-kit:core end -->
 
