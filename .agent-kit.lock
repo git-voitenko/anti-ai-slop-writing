@@ -2,7 +2,7 @@
   "blocks": {
     ".gitignore": "134d48c3ad3c7ac3f81a9098e54f0d38ca8851225081b7e884ae63ad325f245c"
   },
-  "core_sha256": "25bd8c1179e9546bb3a131af7b514d18a7e412d01b0a66d474352db7d5ed4475",
+  "core_sha256": "8298fd7e4910595d53944978e574e3f2df964dcbef000675577fafa4a83864a3",
   "files": {
     ".agents/skills/linear/SKILL.md": "a2c26ae1b5f4488e3a96fee5cdeb3ab032a034bc4bba7f1f94c3cc30cc5e22d7",
     ".agents/skills/linear/references/templates.md": "ab8bcc26f07c081c51be1dcdaee90babcf8601dff88cdde43a9e8b03f9c40472",
@@ -16,13 +16,14 @@
     ".github/workflows/verify.yml": "e9fa0bb1e7f60953cd129722f09a2d06cce545cde038c9cbf63b31810ec407e0",
     "CLAUDE.md": "4cd08e2186e6357a51a646d8fbd5c9402d8c595acf9904b96fe9c5778c32d1ea",
     "docs/code-style.md": "edd36086f9be0634c320403a1682f75ec15213c53b6ee8619165bef77625cf6d",
+    "docs/models.md": "292e611153c990ff14d10399df410dad4dba49ff1412641b66f426f135eba569",
     "hooks/pre-commit": "dc4b3b825e5c34ebd8e64d4d09a1d883cfcf1df8678b0aafb46652c450755282",
     "hooks/pre-push": "e4592caa96183f0d1d47b8c14420acf37b46bbc747980154f5eb29622197fa02",
     "tools/hooks-install.sh": "1dfa48f5f6e78e43f5eec07733d59ddfdb9471754824d0b3e274f5c08e6e0c6e",
-    "tools/kit-check.sh": "b41b0719e6ef2f481f3b1638fbaa5ceaeeed08c04f4735663e403e70774c9141",
+    "tools/kit-check.sh": "078b03ef94ea789229f04071350a626d2c90d7e057f1c71260413bdd917ee163",
     "tools/main-checkout-ff.sh": "6787b2701d4abad5404c42217c0e3c02ea2604d13c2ac2000faad39ee4bfc5cb"
   },
   "profile": "node",
-  "source_sha": "4840fdf1a038c85784d44d7324a824b0a161bcda",
-  "version": "1.0.9"
+  "source_sha": "1991fd605bb8c07ae08131fb53c8543080778e1f",
+  "version": "1.0.11"
 }

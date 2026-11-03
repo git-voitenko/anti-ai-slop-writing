@@ -11,7 +11,7 @@ ROOT = sys.argv[1]
 LOCK = ".agent-kit.lock"
 # Every profile carries these; dropping one from the lock is drift (agent-kit standard-contract).
 REQUIRED = [
-    "CLAUDE.md", "docs/code-style.md",
+    "CLAUDE.md", "docs/code-style.md", "docs/models.md",
     ".agents/skills/linear/SKILL.md", ".agents/skills/linear/references/templates.md",
     ".agents/skills/verify/SKILL.md", ".claude/skills/linear", ".claude/skills/verify",
     ".claude/settings.json", ".claude/rules/code-style.md", ".codex/config.toml",
