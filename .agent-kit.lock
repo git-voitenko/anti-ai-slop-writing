@@ -24,6 +24,6 @@
     "tools/main-checkout-ff.sh": "6787b2701d4abad5404c42217c0e3c02ea2604d13c2ac2000faad39ee4bfc5cb"
   },
   "profile": "node",
-  "source_sha": "1991fd605bb8c07ae08131fb53c8543080778e1f",
-  "version": "1.0.11"
+  "source_sha": "83fa9f97a6f57a6824175bcbfe24fa5d0f08dd51",
+  "version": "1.0.12"
 }
