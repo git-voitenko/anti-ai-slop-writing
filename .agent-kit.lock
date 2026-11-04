@@ -2,7 +2,7 @@
   "blocks": {
     ".gitignore": "134d48c3ad3c7ac3f81a9098e54f0d38ca8851225081b7e884ae63ad325f245c"
   },
-  "core_sha256": "8298fd7e4910595d53944978e574e3f2df964dcbef000675577fafa4a83864a3",
+  "core_sha256": "f39551f070bfca44b74d68bc0236cd4a9afffa6828a4259a61a2bf602aa7a1df",
   "files": {
     ".agents/skills/linear/SKILL.md": "a2c26ae1b5f4488e3a96fee5cdeb3ab032a034bc4bba7f1f94c3cc30cc5e22d7",
     ".agents/skills/linear/references/templates.md": "ab8bcc26f07c081c51be1dcdaee90babcf8601dff88cdde43a9e8b03f9c40472",
@@ -24,6 +24,6 @@
     "tools/main-checkout-ff.sh": "6787b2701d4abad5404c42217c0e3c02ea2604d13c2ac2000faad39ee4bfc5cb"
   },
   "profile": "node",
-  "source_sha": "83fa9f97a6f57a6824175bcbfe24fa5d0f08dd51",
-  "version": "1.0.12"
+  "source_sha": "4ca7467aa9471bad420ddb3df80f234183777842",
+  "version": "1.0.14"
 }
