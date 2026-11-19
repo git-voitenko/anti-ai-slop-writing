@@ -13,7 +13,7 @@
     ".claude/skills/verify": "symlink:../../.agents/skills/verify",
     ".codex/config.toml": "38ac0813adff86fb38d8b26855c1bd752c970d8cf49725c6aa877bb7b967af70",
     ".github/workflows/verify-full.yml": "13ae03b9a67d7e7a816b8acce895f2f1a57b50df867d0ed76fa766162a4b04e7",
-    ".github/workflows/verify.yml": "56a88c4db7637183b6245babca0b48d00d267daed28747fd10a013ec2db74dc8",
+    ".github/workflows/verify.yml": "f6b5adc5eee986c57b35c40bfed05f2b4ac835b7c6cf611662b457df1700d45b",
     "CLAUDE.md": "4cd08e2186e6357a51a646d8fbd5c9402d8c595acf9904b96fe9c5778c32d1ea",
     "docs/code-style.md": "edd36086f9be0634c320403a1682f75ec15213c53b6ee8619165bef77625cf6d",
     "docs/models.md": "cf5d75be4fb4d608734d5bcb59fbbf3a8dbaf6dc384c3b52c9795a3cef67cf1e",
@@ -23,6 +23,6 @@
     "tools/kit-check.sh": "c914a6b80d9c39d16ddca2c7a8fe54d7aa127cd673c84f2d8a285f7d14a79a07"
   },
   "profile": "node",
-  "source_sha": "1202e2dc3a4fd526e9ae7506f873b5bd86996176",
-  "version": "1.0.19"
+  "source_sha": "f807937933cddbeb86d8308dd5a94c6cfbd45bed",
+  "version": "1.0.20"
 }
