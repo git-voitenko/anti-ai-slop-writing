@@ -2,7 +2,9 @@
 # Rendered by agent-kit kit-sync from core/github/verify.yml.tmpl + profile; spec — agent-kit docs/architecture.md.
 name: verify
 on:
+  # PRs into main only: a run against another base must not stand as evidence once the base becomes main.
   pull_request:
+    branches: [main]
     types: [opened, synchronize, reopened]
   push:
     branches: [main]
@@ -32,8 +34,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           verified=false
+          # A PR run tests its head merged with main of that moment; that equals the head only if the head holds main.
           if head="$(git rev-parse -q --verify 'HEAD^2^{commit}')" \
             && [ "$(git rev-parse 'HEAD^{tree}')" = "$(git rev-parse "$head^{tree}")" ] \
+            && [ "$(gh api "repos/$GITHUB_REPOSITORY/compare/$(git rev-parse 'HEAD^1')...$head" --jq .behind_by)" = 0 ] \
             && [ "$(gh api "repos/$GITHUB_REPOSITORY/commits/$head/check-runs?check_name=verify&per_page=100" \
               --jq '[.check_runs[] | select(.app.slug == "github-actions")] | max_by(.id) | .conclusion // ""')" = success ]; then
             verified=true
