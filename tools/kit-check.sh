@@ -15,7 +15,7 @@ REQUIRED = [
     ".agents/skills/linear/SKILL.md", ".agents/skills/linear/references/templates.md",
     ".agents/skills/verify/SKILL.md", ".claude/skills/linear", ".claude/skills/verify",
     ".claude/settings.json", ".claude/rules/code-style.md", ".codex/config.toml",
-    "tools/kit-check.sh", "tools/main-checkout-ff.sh", "tools/hooks-install.sh",
+    "tools/kit-check.sh", "tools/hooks-install.sh",
     "hooks/pre-commit", "hooks/pre-push", ".github/workflows/verify.yml",
 ]
 NO_FULL_PROFILES = {"skill"}

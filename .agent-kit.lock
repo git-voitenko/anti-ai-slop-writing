@@ -2,28 +2,27 @@
   "blocks": {
     ".gitignore": "134d48c3ad3c7ac3f81a9098e54f0d38ca8851225081b7e884ae63ad325f245c"
   },
-  "core_sha256": "f39551f070bfca44b74d68bc0236cd4a9afffa6828a4259a61a2bf602aa7a1df",
+  "core_sha256": "5cfa588d9c9fb4ce470e7a589fd32fc878d6e076b6550cf1cbd4ce74b8b71e70",
   "files": {
     ".agents/skills/linear/SKILL.md": "a2c26ae1b5f4488e3a96fee5cdeb3ab032a034bc4bba7f1f94c3cc30cc5e22d7",
     ".agents/skills/linear/references/templates.md": "ab8bcc26f07c081c51be1dcdaee90babcf8601dff88cdde43a9e8b03f9c40472",
     ".agents/skills/verify/SKILL.md": "63da72f73c66aae26bd86e306b604f10508bc60b8a051aff3159fa7312991b57",
     ".claude/rules/code-style.md": "d23609d4bad73d640deede5a5384ee894e9499577d3ff4940d2e074f0ca33325",
-    ".claude/settings.json": "f282a817450760b6fd9f5d99cd5d9d263f6964e86ff6a42d8a13d87feee18921",
+    ".claude/settings.json": "900151e345bbf0cfbb55b50f140c11cedd1716a2590b523c62f1a66c21e5c10b",
     ".claude/skills/linear": "symlink:../../.agents/skills/linear",
     ".claude/skills/verify": "symlink:../../.agents/skills/verify",
     ".codex/config.toml": "38ac0813adff86fb38d8b26855c1bd752c970d8cf49725c6aa877bb7b967af70",
     ".github/workflows/verify-full.yml": "13ae03b9a67d7e7a816b8acce895f2f1a57b50df867d0ed76fa766162a4b04e7",
-    ".github/workflows/verify.yml": "e9fa0bb1e7f60953cd129722f09a2d06cce545cde038c9cbf63b31810ec407e0",
+    ".github/workflows/verify.yml": "56a88c4db7637183b6245babca0b48d00d267daed28747fd10a013ec2db74dc8",
     "CLAUDE.md": "4cd08e2186e6357a51a646d8fbd5c9402d8c595acf9904b96fe9c5778c32d1ea",
     "docs/code-style.md": "edd36086f9be0634c320403a1682f75ec15213c53b6ee8619165bef77625cf6d",
-    "docs/models.md": "292e611153c990ff14d10399df410dad4dba49ff1412641b66f426f135eba569",
+    "docs/models.md": "cf5d75be4fb4d608734d5bcb59fbbf3a8dbaf6dc384c3b52c9795a3cef67cf1e",
     "hooks/pre-commit": "dc4b3b825e5c34ebd8e64d4d09a1d883cfcf1df8678b0aafb46652c450755282",
     "hooks/pre-push": "e4592caa96183f0d1d47b8c14420acf37b46bbc747980154f5eb29622197fa02",
     "tools/hooks-install.sh": "1dfa48f5f6e78e43f5eec07733d59ddfdb9471754824d0b3e274f5c08e6e0c6e",
-    "tools/kit-check.sh": "078b03ef94ea789229f04071350a626d2c90d7e057f1c71260413bdd917ee163",
-    "tools/main-checkout-ff.sh": "6787b2701d4abad5404c42217c0e3c02ea2604d13c2ac2000faad39ee4bfc5cb"
+    "tools/kit-check.sh": "c914a6b80d9c39d16ddca2c7a8fe54d7aa127cd673c84f2d8a285f7d14a79a07"
   },
   "profile": "node",
-  "source_sha": "4ca7467aa9471bad420ddb3df80f234183777842",
-  "version": "1.0.14"
+  "source_sha": "1202e2dc3a4fd526e9ae7506f873b5bd86996176",
+  "version": "1.0.19"
 }

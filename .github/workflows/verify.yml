@@ -12,8 +12,38 @@ concurrency:
 permissions:
   contents: read
 jobs:
-  # No `if:` and no path filters: a skipped required job counts as success, a filtered one stays pending.
+  # push: main only — a merge tree equal to a PR head that passed verify is a duplicate run (docs/architecture.md §«verify.yml»).
+  same-tree:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      checks: read
+    outputs:
+      verified: ${{ steps.tree.outputs.verified }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - id: tree
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          verified=false
+          if head="$(git rev-parse -q --verify 'HEAD^2^{commit}')" \
+            && [ "$(git rev-parse 'HEAD^{tree}')" = "$(git rev-parse "$head^{tree}")" ] \
+            && [ "$(gh api "repos/$GITHUB_REPOSITORY/commits/$head/check-runs?check_name=verify&per_page=100" \
+              --jq '[.check_runs[] | select(.app.slug == "github-actions")] | max_by(.id) | .conclusion // ""')" = success ]; then
+            verified=true
+          fi
+          echo "verified=$verified" >> "$GITHUB_OUTPUT"
+          echo "same-tree: verified=$verified"
+  # No path filters; the only `if:` skips that duplicate and is always true on pull_request (a skipped required job counts as success).
   verify:
+    needs: same-tree
+    if: ${{ !cancelled() && (github.event_name != 'push' || needs.same-tree.outputs.verified != 'true') }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
