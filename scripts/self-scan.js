@@ -24,7 +24,10 @@ const PROOF = join(ROOT, 'PROOF.md');
 const BUDGET_MARKER = /<!--\s*budget:\s*(\d+)\s*-->/;
 
 const TARGETS = ['README.md', 'CONTRIBUTING.md', 'docs'];
-const SKIP = new Set(['PROOF.md', 'CHANGELOG.md', 'CODE_OF_CONDUCT.md']);
+// agent-kit managed files are the kit's prose: only kit-sync changes them (AGENTS.md, invariant 3).
+const LOCK = join(ROOT, '.agent-kit.lock');
+const MANAGED = existsSync(LOCK) ? Object.keys(JSON.parse(readFileSync(LOCK, 'utf8')).files) : [];
+const SKIP = new Set(['PROOF.md', 'CHANGELOG.md', 'CODE_OF_CONDUCT.md', ...MANAGED]);
 
 function collect(target) {
   const path = join(ROOT, target);
